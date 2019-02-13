@@ -54,7 +54,7 @@ pipeline {
             }
         }
         stage ('Send out email Notification') {
-            aget {
+            agent {
                 label "devops12"
             }
             steps {
@@ -63,17 +63,8 @@ pipeline {
                 
             }
         }
-        post {
-      
-        failure {
-            steps {
-                emailext body: '$DEFAULT_CONTENT', subject: 'build failed', to: 'devops81@gmail.com'
-
-                
-            }
-        }
-        }
+       
     }
 }	
                       
-}
+
