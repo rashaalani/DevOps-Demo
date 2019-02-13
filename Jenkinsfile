@@ -3,7 +3,7 @@ pipeline {
         label "master"
     }
     tools {
-        maven 'Maven3'
+        maven 'mvn3'
 
     }
     stages {
