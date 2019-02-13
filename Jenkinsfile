@@ -67,12 +67,11 @@ pipeline {
        
         post { 
         always { 
-         stage ('Send out email Notification') {
-             steps {
+     
                 emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'devops81@gmail.com'
 
              }  
             }
-        }
+        
     }              
 }
