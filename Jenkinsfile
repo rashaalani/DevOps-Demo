@@ -18,7 +18,7 @@ pipeline {
         
         stage ('Build the project') {
             steps {
-                dir("/home/jenkins/jenkinsagent/workspace/FOLDER1/Java-Maven-Pipeline-Declarative/examples/feed-combiner-java8-webapp") {
+                dir("D:\JHOME\workspace\pipeline example\examples\feed-combiner-java8-webapp") {
              sh 'mvn clean install'
                 }
                 
@@ -42,7 +42,7 @@ pipeline {
         stage ('Deploy the application') {
             steps {
                
-                sh 'sudo cp  -rf  /home/jenkins/jenkinsagent/workspace/FOLDER1/Java-Maven-Pipeline-Declarative/examples/feed-combiner-java8-webapp/target/devops.war /home/user/jarfile'
+                echo "here we can deply hte app"
                 
             }
         }
