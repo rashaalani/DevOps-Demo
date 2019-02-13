@@ -25,7 +25,7 @@ pipeline {
         
         stage ('Build the project') {
             steps {
-                dir("	/var/lib/jenkins/workspace/FOLDER1/Java-Maven-Pipeline-Declarative/examples/feed-combiner-java8-webapp") {
+                dir("/var/lib/jenkins/workspace/PipelineProject/examples/feed-combiner-java8-webapp") {
              sh 'mvn clean install'
                 }
                 
