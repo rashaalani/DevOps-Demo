@@ -55,7 +55,7 @@ pipeline {
         }
         stage ('Send out email Notification') {
             aget {
-                label "Linux-Java-Slave"
+                label "devops12"
             }
             steps {
                 emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'devops81@gmail.com'
