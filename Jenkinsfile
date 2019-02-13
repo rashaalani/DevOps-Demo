@@ -17,10 +17,13 @@ pipeline {
         }
         
         stage ('Build the project') {
+           
+
             steps {
-                cmd d:
-                dir("d:/JHOME/workspace/pipeline example/examples/feed-combiner-java8-webapp") {
-             bat 'mvn clean install'
+                def mvnHome = tool name: 'MVN3', type: 'maven'
+dir('d:/JHOME/workspace/pipeline example/examples/feed-combiner-java8-webapp')
+{ 
+             bat "${mvnHome}/bin/mvn clean install"}
                 }
                 
             }
