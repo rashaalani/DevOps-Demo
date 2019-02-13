@@ -18,7 +18,7 @@ pipeline {
         
         stage ('Build the project') {
             steps {
-                dir("D:\JHOME\workspace\pipeline example\examples\feed-combiner-java8-webapp") {
+                dir("d:/JHOME/workspace/pipeline example/examples/feed-combiner-java8-webapp") {
              sh 'mvn clean install'
                 }
                 
