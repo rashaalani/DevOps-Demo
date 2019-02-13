@@ -49,7 +49,7 @@ pipeline {
         stage ('Deploy the application') {
             steps {
                
-                sh 'sudo cp  -rf  /var/lib/jenkins/workspace/PipelineProject/examples/feed-combiner-java8-webapp/target/devops.war /home/jarfile'
+                sh 'cp  -rf  /var/lib/jenkins/workspace/PipelineProject/examples/feed-combiner-java8-webapp/target/devops.war /home/jarfile'
                 
             }
         }
