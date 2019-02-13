@@ -58,7 +58,16 @@ pipeline {
                 label "devops12"
             }
             steps {
-                emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'devops81@gmail.com'
+                emailext body: '$DEFAULT_CONTENT', subject: 'email1', to: 'devops81@gmail.com'
+
+                
+            }
+        }
+        post {
+      
+        failure {
+            steps {
+                emailext body: '$DEFAULT_CONTENT', subject: 'build failed', to: 'devops81@gmail.com'
 
                 
             }
