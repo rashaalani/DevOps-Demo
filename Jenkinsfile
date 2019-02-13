@@ -3,11 +3,18 @@ pipeline {
         label "master"
     }
     tools {
-        maven 'mvn3'
+        maven 'Maven3'
 
     }
     stages {
-      
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = $PATH"
+                    echo "M2_HOME = $M2_HOME"
+                '''
+            }
+        }
 
         stage ('Checkout') {
             steps {
@@ -17,13 +24,9 @@ pipeline {
         }
         
         stage ('Build the project') {
-           
-
             steps {
-                def mvnHome = tool name: 'MVN3', type: 'maven'
-dir('d:/JHOME/workspace/pipeline example/examples/feed-combiner-java8-webapp')
-{ 
-             bat "${mvnHome}/bin/mvn clean install"}
+                dir("/home/jenkins/jenkinsagent/workspace/FOLDER1/Java-Maven-Pipeline-Declarative/examples/feed-combiner-java8-webapp") {
+             sh 'mvn clean install'
                 }
                 
             }
@@ -46,22 +49,21 @@ dir('d:/JHOME/workspace/pipeline example/examples/feed-combiner-java8-webapp')
         stage ('Deploy the application') {
             steps {
                
-                echo "here we can deply hte app"
+                sh 'sudo cp  -rf  /home/jenkins/jenkinsagent/workspace/FOLDER1/Java-Maven-Pipeline-Declarative/examples/feed-combiner-java8-webapp/target/devops.war /home/user/jarfile'
                 
             }
         }
         stage ('Send out email Notification') {
-            agent {
-                label "devops12"
+            aget {
+                label "Linux-Java-Slave"
             }
             steps {
-                emailext body: '$DEFAULT_CONTENT', subject: 'email1', to: 'devops81@gmail.com'
+                emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'devops81@gmail.com'
 
                 
             }
         }
+        }
        
-    }
-}	
                       
-
+}
