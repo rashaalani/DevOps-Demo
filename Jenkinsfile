@@ -20,7 +20,7 @@ pipeline {
             steps {
                 cmd d:
                 dir("d:/JHOME/workspace/pipeline example/examples/feed-combiner-java8-webapp") {
-             sh 'mvn clean install'
+             bat 'mvn clean install'
                 }
                 
             }
