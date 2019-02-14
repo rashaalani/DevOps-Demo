@@ -41,7 +41,7 @@ pipeline {
             },
                       'Sending out the JUNIT report' :
                       {                  
-                         emailext body: 'Junit reporting getting archived', subject: 'junit update', to: 'devops81@gmail.com'
+                         emailext body: 'Junits reporting getting archived', subject: 'junit update', to: 'devops81@gmail.com'
                      }
                      )
             } 
