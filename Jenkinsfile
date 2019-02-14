@@ -36,7 +36,7 @@ pipeline {
                   parallel ( 
                       'Archeiving the reports': 
             {
-                junit 'junit allowEmptyResults: true, testResults: '/var/lib/jenkins/workspace/PipelineProject/examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
+                echo "This is JUNIT"
                 
             },
                       'Sending out the JUNIT report' :
