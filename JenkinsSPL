@@ -20,7 +20,7 @@ stage ('Generate JUNIT REPORT')
             	}
  stage('SonarQub Analysis') {
 
-def mvnHome = tool name: 'MVN3', type: 'maven'
+def mvnHome = tool name: 'Maven3', type: 'maven'
 
 withSonarQubeEnv('SONRQUBE-INST') {
 dir('/var/lib/jenkins/workspace/FOLDER1/Java-Maven-Pipeline/examples/feed-combiner-java8-webapp')
