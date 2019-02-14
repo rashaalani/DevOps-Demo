@@ -63,6 +63,13 @@ pipeline {
                 
             }
         }
+        
+      post {
+        always {
+            archive "target/**/*"
+            junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
+        }
+    }
         }
        
         
