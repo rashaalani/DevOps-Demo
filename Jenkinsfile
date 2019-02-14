@@ -36,7 +36,7 @@ pipeline {
                   parallel ( 
                       'Archeiving the reports': 
             {
-                junit '/var/lib/jenkins/workspace/PipelineProject/examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
+                junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
                 
             },
                       'Sending out the JUNIT report' :
