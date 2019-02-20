@@ -41,8 +41,8 @@ emailext body: 'This is a test email', subject: 'TEST EMAIL', to: 'devops81@Gmai
 stage ('Deploy to QA')
 {
 
-sh 'sudo rm -rf /home/centos/warfile/devops.war'
-sh 'sudo cp  -rf  /var/lib/jenkins/workspace/ScriptedPipeline/examples/feed-combiner-java8-webapp/target/devops.war /home/centos/warfile'
+sh 'rm -rf /home/centos/warfile/devops.war'
+sh 'cp  -rf  /var/lib/jenkins/workspace/ScriptedPipeline/examples/feed-combiner-java8-webapp/target/devops.war /home/centos/warfile'
 
 }
 
