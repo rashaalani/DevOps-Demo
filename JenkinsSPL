@@ -35,7 +35,7 @@ sh "${mvnHome}/bin/mvn sonar:sonar"
 stage ('Build Notification')
 
 {
-emailext body: '${SCRIPT, template="francois.email.groovy.template"}', recipientProviders: [developers()], subject: '$PROJECT_DEFAULT_SUBJECT', to: 'devops@81@gmail.com'
+emailext body: 'This is a test email', subject: 'TEST EMAIL', to: 'devops81@Gmail.com'
 }
 
 stage ('Deploy to QA')
