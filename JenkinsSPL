@@ -16,7 +16,7 @@ sh "${mvnHome}/bin/mvn clean install"}
 }
 stage ('Generate JUNIT REPORT') 
 	        {
-                junit '/var/lib/jenkins/workspace/ScriptedPipeline/examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml' 
+                junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
             	}
  stage('SonarQub Analysis') {
 
