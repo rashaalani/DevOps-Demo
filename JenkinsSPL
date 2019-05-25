@@ -10,7 +10,7 @@ stage ('Compile-Package')
 
 {
 def mvnHome = tool name: 'Maven3', type: 'maven'
-dir('/var/lib/jenkins/workspace/ScriptedPipeline/examples/feed-combiner-java8-webapp')
+dir('/var/lib/jenkins/workspace/New-PipelineJob/examples/feed-combiner-java8-webapp')
 { 
 sh "${mvnHome}/bin/mvn clean install"}
 }
