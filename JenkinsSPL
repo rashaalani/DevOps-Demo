@@ -25,7 +25,7 @@ def mvnHome = tool name: 'Maven3', type: 'maven'
 withSonarQubeEnv('SONRQUBE-INST') {
 dir('/var/lib/jenkins/workspace/ScriptedPipeline/examples/feed-combiner-java8-webapp')
 {
-sh "${mvnHome}/bin/mvn sonar:sonar"
+echo "This section will do the sonarqube analysis"
 }
 }
 
