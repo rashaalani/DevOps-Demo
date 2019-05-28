@@ -25,8 +25,7 @@
                     
                     stage ('Build the project') {
                         steps {
-                            dir("/home/cloud_user/workspace/Declarative Pipeline example/examples/feed-combiner-java8-webapp") {
-                         sh 'mvn clean install'
+                            echo "Build the project"
                             }
                             
                         }
