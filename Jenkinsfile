@@ -25,7 +25,7 @@
                     
                     stage ('Build the project') {
                         steps {
-                            dir("/home/jenkins/node/workspace/Parallel-Execution-Example/examples/feed-combiner-java8-webapp") {
+                            dir("/home/cloud_user/workspace/Declarative Pipeline example/examples/feed-combiner-java8-webapp") {
                          sh 'mvn clean install'
                             }
                             
