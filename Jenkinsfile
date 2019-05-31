@@ -28,7 +28,7 @@
                             
                           sh '''
                                 cd "/var/lib/jenkins/workspace/Declarative Pipeline example/examples/feed-combiner-java8-webapp"
-                                mvn clean install
+                                mvn test install
                             '''   }
                     }
                     
