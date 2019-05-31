@@ -25,7 +25,7 @@
                     
                     stage ('Build the project') {
                         steps {
-                                     def mvnHome = tool name: 'MVN3', type: 'maven'
+                            
                           sh '''
                                 cd "/var/lib/jenkins/workspace/Declarative Pipeline example/examples/feed-combiner-java8-webapp"
                                 mvn clean install
