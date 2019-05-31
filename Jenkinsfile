@@ -29,7 +29,7 @@
                             }
                             
                         }
-                    }
+                    
                       stage ('Generate JUNIT REPORT') {
                          steps {
                               parallel ( 
@@ -76,7 +76,7 @@
                 }
                 
                 
-            
+            }
                    
                     
                         
