@@ -59,7 +59,7 @@
                     stage ('Deploy the application') {
                         steps {
                            
-                            sh 'cp  -rf  /home/jenkins/node/workspace/Parallel-Execution-Example/examples/feed-combiner-java8-webapp/target/devops.war /home/jarfile'
+                            echo 'I can copy stuffs here'
                             
                         }
                     }
