@@ -35,7 +35,7 @@
                               parallel ( 
                                   'Archeiving the reports': 
                         {
-                            junit '/examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
+                            junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
                             
                         },
                                   'Sending out the JUNIT report' :
