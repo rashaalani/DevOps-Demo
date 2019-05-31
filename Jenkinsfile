@@ -25,10 +25,12 @@
                     
                     stage ('Build the project') {
                         steps {
-                            echo "Build the project"
-                            }
                             
-                        }
+                         def mvnHome = tool name: 'MVN3', type: 'maven'
+                         dir('/var/lib/jenkins/workspace/Declarative Pipeline example/examples/feed-combiner-java8-webapp')
+                                        sh "${mvnHome}/bin/mvn clean install"}   
+                                    }
+                    }
                     
                       stage ('Generate JUNIT REPORT') {
                          steps {
