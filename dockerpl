@@ -17,7 +17,7 @@ sh "${mvnHome}/bin/mvn clean install"
 stage('Build Docker Image')
 {
 
-sh 'docker build -t devops81/my-app:2.1.2 .'
+sh 'docker build -t devops81/devops81:2.0.0 .'
 }
 
 stage('Push docker image') {
