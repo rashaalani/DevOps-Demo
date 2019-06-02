@@ -1,0 +1,24 @@
+
+node 
+{
+
+stage('SCM Checkout')
+          {
+          checkout([$class: 'GitSCM', branches: [[name: '*/DockerExample']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/devops81/DevOps-Demo.git']]])
+          }
+          
+stage('Build the MVN project')
+{
+def mvnHome = tool name: 'Maven3', type: 'maven'
+sh "${mvnHome}/bin/mvn package"
+}
+stage('Build Docker Image')
+{
+sh 'docker build -t devops81/my-app:2.1.2 .'
+}
+
+stage('Push docker image') {
+sh 'docker login -u devops81 -p Qw32k12345'
+sh 'docker push devops81/my-app:2.1.2'
+}
+}
