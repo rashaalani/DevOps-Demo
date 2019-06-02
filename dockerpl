@@ -10,8 +10,9 @@ stage('SCM Checkout')
 stage('Build the MVN project')
 {
 def mvnHome = tool name: 'Maven3', type: 'maven'
-sh 'cd /var/lib/jenkins/workspace/DockerPipeline/examples/feed-combiner-java8-webapp'
+dir("/var/lib/jenkins/workspace/DockerPipeline/examples/feed-combiner-java8-webapp") {
 sh "${mvnHome}/bin/mvn clean install"
+}
 }
 stage('Build Docker Image')
 {
