@@ -24,4 +24,10 @@ stage('Push docker image') {
 sh 'docker login -u devops81 -p Qw32k12345'
 sh 'docker push devops81/my-app:2.1.2'
 }
+stage('Running the image')
+{
+sh 'docker system prune'
+sh 'docker kill $(docker ps -q)'
+sh docker run -p 8080:8080 -d --name  devsite  devops81/devops81:2.0.0
+}
 }
