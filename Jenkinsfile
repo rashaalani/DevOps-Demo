@@ -73,6 +73,14 @@
                             
                         }
                     }
+                            
+                   stage ('Send slack notification')
+                            {
+                                        steps 
+                                        {
+                                                    slackSend baseUrl: 'https://devops81.slack.com/', channel: '#Krishnademo', color: 'good', message: 'Slack build status', teamDomain: 'devops81'
+                                        }
+                            }
                     
                   
                 }
