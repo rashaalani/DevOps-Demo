@@ -71,7 +71,7 @@
                             {
                                         steps 
                                         {
-                                                    slackSend channel: '#krishnademo', color: 'good', message: 'Slack notification', teamDomain: 'devops81', tokenCredentialId: 'SlackKrishnademo'
+                                                   slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#krishnademo', color: 'good', message: 'Slack notification', teamDomain: 'devops81', tokenCredentialId: 'SlackKrishnademo'
                                         }
                             }
                     
