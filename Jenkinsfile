@@ -71,7 +71,7 @@
                             {
                                         steps 
                                         {
-                                                    slackSend baseUrl: 'https://devops81.slack.com/', tokenCredentialId: 'SLACK-JENKINS-NOTIFY', channel: '#Krishnademo', color: 'good', message: 'Slack build status', teamDomain: 'devops81'
+                                                    slackSend baseUrl: 'https://hooks.slack.com/services/', tokenCredentialId: 'SLACK-JENKINS-NOTIFY', channel: '#Krishnademo', color: 'good', message: 'Slack build status', teamDomain: 'devops81'
                                         }
                             }
                     
