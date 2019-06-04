@@ -43,16 +43,9 @@
                                   'Sending out the JUNIT report' :
                                   {                  
                                      emailext body: 'Junits reporting getting archived', subject: 'junit update', to: 'devops81@gmail.com'
-                                 },
-                                          
-                                           'calling Job one' :
-                                  {                  
-                                    build 'Job-One' 
-                                 },
-                                           'Calling job two' :
-                                  {                  
-                                         build 'Job-Two'  
                                  }
+                                          
+                                       
                                  )
                         } 
                     }
