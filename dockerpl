@@ -1,5 +1,5 @@
 
-node ('LinuxNode')
+node 
 {
 
 stage('SCM Checkout')
