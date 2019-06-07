@@ -29,7 +29,7 @@ stage('Running the image')
 
 sh 'docker kill $(docker ps -q)'
 sh 'docker system prune --force'
-sh 'docker run -p 8080:8080 -d --name  devsite  devops81/devops81:2.0.0'
+sh 'docker run -p 9000:9000 -d --name  devsite  devops81/devops81:2.0.0'
 
 }
 }
