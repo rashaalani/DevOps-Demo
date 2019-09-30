@@ -91,6 +91,13 @@
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+	<dependency>
+	<groupId>org.sonarsource.scanner.maven</groupId>
+	<artifactId>sonar-maven-plugin</artifactId>
+	<version>3.2</version>
+	</dependency>
+	
+
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -217,6 +224,19 @@
                 </plugins>
             </build>
         </profile>
+	    <profile>
+<id>sonar</id>
+<activation>
+<activeByDefault>true</activeByDefault>
+</activation>
+<properties>
+
+<sonar.host.url>
+http://172.31.4.24:8080
+</sonar.host.url>
+</properties>
+</profile>
+
     </profiles>
 
     <properties>
