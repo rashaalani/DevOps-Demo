@@ -25,14 +25,20 @@ pipeline {
             }
         }
 
-     	stage('SonarQube analysis') {
-	     steps {
-		//Prepare SonarQube scanner enviornment
-		withSonarQubeEnv('SonarServer') {
-		   bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar'
-		}
-	      }
-	}
+     
+stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'SonarQubeScanner'
+    }
+    steps {
+        withSonarQubeEnv('SonarServer') {
+            sh "/opt/sonarqube-7.6/sonar-scanner4.2.0/bin/sonar-scanner"
+        }
+        timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
+    }
+}
 
 //	stage('Quality Gate') {
 //		steps {
