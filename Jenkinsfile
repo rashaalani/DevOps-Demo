@@ -27,10 +27,12 @@ pipeline {
 
      
 stage('Sonarqube') {
+	
     environment {
         scannerHome = tool 'SonarScan'
     }
     steps {
+	    ws('/var/lib/jenkins/workspace/Pipline-Example')
         withSonarQubeEnv('SonarServer') {
              sh "${scannerHome}/bin/sonar-scanner"
         }
