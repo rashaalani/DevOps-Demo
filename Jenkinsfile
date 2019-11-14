@@ -25,7 +25,16 @@ pipeline {
             }
         }
 
-     
+ stage('Execute Maven') {
+		steps {
+		   script {
+		
+		rtMaven.run pom: '/var/lib/jenkins/workspace/Pipline-Example/examples/feed-combiner-java8-webapp/pom.xml', goals: 'clean install', buildInfo: buildInfo
+			}
+		}
+		
+	}
+	    
 stage('Sonarqube') {
 	
     environment {
@@ -76,15 +85,7 @@ stage('Sonarqube') {
 	    }
 	}
 
-	stage('Execute Maven') {
-		steps {
-		   script {
-		
-		rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
-			}
-		}
-		
-	}
+	
 
 	stage('Publish build info') {
 		steps {
