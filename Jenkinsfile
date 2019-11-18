@@ -86,7 +86,9 @@ stage('Sonarqube') {
 	    stage('Sending Slack notification')
 	    
 	    {
+		    steps {
 		    slackSend baseUrl: 'https://hookds.slack.com/services/', channel: '#11182019', color: 'good', iconEmoji: '', message: 'Welcome to jenkins', teamDomain: 'devops81', tokenCredentialId: 'slack', username: ''
+		    }
 	    }
 
 	
