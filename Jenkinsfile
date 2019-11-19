@@ -88,15 +88,7 @@ stage('Sonarqube') {
 	    }
 	}
 	    
-	    stage('Sending Slack notification')
-	    
-	    {
-		    steps {
-		   slackSend channel: 'stickynotes', color: 'good', iconEmoji: '', message: "started ${env.JOB_NAME}  ${env.BUILD_NUMBER} ${env.BUILD_URL}", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
-		    }
-	    }
-
-	
+	   
 
 	stage('Publish build info') {
 		steps {
@@ -106,5 +98,19 @@ stage('Sonarqube') {
 		}
 		}
 	}
+	    post {
+       // only triggered when blue or green sign
+       fixed {
+           slackSend channel: 'stickynotes', color: 'good', iconEmoji: '', message: "started ${env.JOB_NAME}  ${env.BUILD_NUMBER} ${env.BUILD_URL}", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
+       }
+       // triggered when red sign
+       failure {
+           slackSend channel: 'stickynotes', color: 'danger', iconEmoji: '', message: "started ${env.JOB_NAME}  ${env.BUILD_NUMBER} ${env.BUILD_URL}", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
+       }
+       // trigger every-works
+       always {
+           slackSend channel: 'stickynotes', color: 'warning', iconEmoji: '', message: "Always message", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
+       }
+    }
 }
 }
