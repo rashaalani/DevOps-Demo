@@ -65,7 +65,7 @@ stage('Sonarqube') {
 //		 }
 //	}
 
-	    stage('Artifactory configuration') {{
+	    stage('Artifactory configuration') {
 		
 	   steps {
 		script {
@@ -83,7 +83,7 @@ stage('Sonarqube') {
 			
 			buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
 
-			buildInfo.env.capture = true
+			buildInfos.env.capture = true
 			}
 	    }
 	}
