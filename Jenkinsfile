@@ -65,7 +65,7 @@ stage('Sonarqube') {
 //		 }
 //	}
 
-	stage('Artifactory configuration') {
+	    stage('Artifactory configuration') {{
 		
 	   steps {
 		script {
