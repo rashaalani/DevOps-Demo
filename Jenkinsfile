@@ -92,7 +92,7 @@ stage('Sonarqube') {
 	    
 	    {
 		    steps {
-		    slackSend baseUrl: 'https://hookds.slack.com/services/', channel: '#11182019', color: 'good', iconEmoji: '', message: 'Welcome to jenkins', teamDomain: 'devops81', tokenCredentialId: 'slack', username: ''
+		   slackSend channel: 'stickynotes', color: 'good', iconEmoji: '', message: 'started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)', teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
 		    }
 	    }
 
