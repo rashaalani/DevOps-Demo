@@ -33,7 +33,12 @@ pipeline {
 			}
 		}
 		
-	}
+ }
+	    stage('Publish JUNIT')
+	    {
+		    steps { junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
+			  }
+	    }
 	    
 stage('Sonarqube') {
 	
