@@ -98,7 +98,9 @@ stage('Sonarqube') {
 		}
 		}
 	}
-	    post {
+	   
+}
+	 post {
        // only triggered when blue or green sign
        fixed {
            slackSend channel: 'stickynotes', color: 'good', iconEmoji: '', message: "started ${env.JOB_NAME}  ${env.BUILD_NUMBER} ${env.BUILD_URL}", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
@@ -112,5 +114,4 @@ stage('Sonarqube') {
            slackSend channel: 'stickynotes', color: 'warning', iconEmoji: '', message: "Always message", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
        }
     }
-}
 }
