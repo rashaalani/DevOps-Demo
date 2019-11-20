@@ -125,5 +125,8 @@ stage('Sonarqube') {
        always {
            slackSend channel: 'stickynotes', color: 'warning', iconEmoji: '', message: "Always message", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
        }
+		 succcess {
+			 slackSend channel: 'stickynotes', color: 'good', iconEmoji: '', message: 'Now i am in succcess clause', teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
+		 }
     }
 }
