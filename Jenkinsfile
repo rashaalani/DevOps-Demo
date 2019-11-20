@@ -83,7 +83,7 @@ stage('Sonarqube') {
 			
 			buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
 
-			buildInfos.env.capture = true
+			buildInfo.env.capture = true
 			}
 	    }
 	}
