@@ -114,9 +114,10 @@ stage('Sonarqube') {
 }
 	 post {
        // only triggered when blue or green sign
-       fixed {
-           slackSend channel: 'stickynotes', color: 'good', iconEmoji: '', message: "started ${env.JOB_NAME}  ${env.BUILD_NUMBER} ${env.BUILD_URL}", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
+		 success {
+           slackSend channel: 'stickynotes', color: 'good', iconEmoji: '', message: "Now we are in success clause", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
        }
+       
        // triggered when red sign
        failure {
            slackSend channel: 'stickynotes', color: 'danger', iconEmoji: '', message: "started ${env.JOB_NAME}  ${env.BUILD_NUMBER} ${env.BUILD_URL}", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
@@ -125,8 +126,6 @@ stage('Sonarqube') {
        always {
            slackSend channel: 'stickynotes', color: 'warning', iconEmoji: '', message: "Always message", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
        }
-		 succcess {
-			 slackSend channel: 'stickynotes', color: 'good', iconEmoji: '', message: 'Now i am in succcess clause', teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
-		 }
+		
     }
 }
