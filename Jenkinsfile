@@ -90,14 +90,14 @@ stage('Sonarqube') {
 	    
 	   
 
-	stage('Publish build info') {
+	/* stage('Publish build info') {
 		steps {
 		  script {
 
 		server.publishBuildInfo buildInfo
 		}
 		}
-	}
+	} */
 	    stage('run-parallel-branches') {
   steps {
     parallel(
