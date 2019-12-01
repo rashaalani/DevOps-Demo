@@ -9,8 +9,6 @@ def server = Artifactory.server 'ARTI-123'
 //Create Artifactory Maven Build instance
 
 
-def buildInfo
-
 pipeline {
     agent any
 
