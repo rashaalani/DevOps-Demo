@@ -3,6 +3,7 @@
 def server = Artifactory.server 'ARTI-123'
 	def buildInfo = Artifactory.newBuildInfo()
   			buildInfo.env.capture = true
+rtMaven.tool = 'Maven3' //Maven tool name specified in Jenkins configuration
 		 //If artifactory is not defined in Jenkins, then create on:
 		// def server = Artifactory.newServer url: 'Artifactory url', username: 'username', password: 'password'
 
@@ -70,7 +71,7 @@ stage('Sonarqube') {
 		script {
 		
   			def rtMaven = Artifactory.newMavenBuild()
-  			rtMaven.tool = 'Maven3' //Maven tool name specified in Jenkins configuration
+  			
 		
 			rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local', server: server //Defining where the build artifacts should be deployed to
 			
