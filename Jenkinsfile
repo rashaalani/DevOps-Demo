@@ -65,11 +65,14 @@ stage('Sonarqube') {
 //		 }
 //	}
 
-	    stage('Artifactory configuration') {
+	    stage('Upload on artifactory') {
 		
 	   steps {
 		script {
-			rtMaven.tool = 'Maven3' //Maven tool name specified in Jenkins configuration
+			def buildInfo = Artifactory.newBuildInfo()
+  			buildInfo.env.capture = true
+  			def rtMaven = Artifactory.newMavenBuild()
+  			rtMaven.tool = 'Maven3' //Maven tool name specified in Jenkins configuration
 		
 			rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local', server: server //Defining where the build artifacts should be deployed to
 			
