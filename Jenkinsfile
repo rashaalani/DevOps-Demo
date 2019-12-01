@@ -81,8 +81,7 @@ stage('Sonarqube') {
 			rtMaven.deployer.artifactDeploymentPatterns.addExclude("pom.xml") //Exclude artifacts from being deployed
 			
 			//rtMaven.deployer.deployArtifacts =false // Disable artifacts deployment during Maven run
-		    
-			buildInfo = Artifactory.newBuildInfo() //Publishing build-Info to artifactory
+		  
 			
 			buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
 
