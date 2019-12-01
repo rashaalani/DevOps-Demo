@@ -6,7 +6,7 @@ def server = Artifactory.server 'ARTI-123'
 		// def server = Artifactory.newServer url: 'Artifactory url', username: 'username', password: 'password'
 
 //Create Artifactory Maven Build instance
-def rtMaven = Artifactory.newMavenBuild()
+
 
 def buildInfo
 
