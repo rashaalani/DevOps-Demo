@@ -1,7 +1,8 @@
 // Obtaining an Artifactory server instance defined in Jenkins:
 			
 def server = Artifactory.server 'ARTI-123'
-
+	def buildInfo = Artifactory.newBuildInfo()
+  			buildInfo.env.capture = true
 		 //If artifactory is not defined in Jenkins, then create on:
 		// def server = Artifactory.newServer url: 'Artifactory url', username: 'username', password: 'password'
 
@@ -69,8 +70,7 @@ stage('Sonarqube') {
 		
 	   steps {
 		script {
-			def buildInfo = Artifactory.newBuildInfo()
-  			buildInfo.env.capture = true
+		
   			def rtMaven = Artifactory.newMavenBuild()
   			rtMaven.tool = 'Maven3' //Maven tool name specified in Jenkins configuration
 		
