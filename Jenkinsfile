@@ -41,7 +41,7 @@ pipeline {
 			  }
 	    }
 	    
-stage('Sonarqube') {
+/*stage('Sonarqube') {
 	
     environment {
         scannerHome = tool 'SonarScan'
@@ -64,7 +64,7 @@ stage('Sonarqube') {
 //			waitForQualityGate abortPipeline: false
 //		       }
 //		 }
-//	}
+//	} */
 
 	    stage('Upload on artifactory') {
 		
