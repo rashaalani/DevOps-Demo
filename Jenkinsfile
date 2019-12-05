@@ -27,6 +27,10 @@ pipeline {
         }
 
  stage('Execute Maven') {
+	 agent { 
+		 label 'linuxagent'
+	       }
+		
 		steps {
 		   script {
 		
