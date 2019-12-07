@@ -1,10 +1,10 @@
 // Obtaining an Artifactory server instance defined in Jenkins:
 			
-def server = Artifactory.server 'ARTI-123'
+def server = Artifactory.server 'artifactory'
 def rtMaven = Artifactory.newMavenBuild()
 	def buildInfo = Artifactory.newBuildInfo()
   			buildInfo.env.capture = true
-rtMaven.tool = 'Maven3' //Maven tool name specified in Jenkins configuration
+rtMaven.tool = 'maven3' //Maven tool name specified in Jenkins configuration
 		 //If artifactory is not defined in Jenkins, then create on:
 		// def server = Artifactory.newServer url: 'Artifactory url', username: 'username', password: 'password'
 
@@ -15,8 +15,8 @@ pipeline {
     agent any
 
 	tools {
-		jdk "JAVA8"
-		maven "Maven3"
+		jdk "java8"
+		maven "maven3"
 	}
 
     stages {
