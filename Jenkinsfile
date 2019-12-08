@@ -1,6 +1,7 @@
 // Obtaining an Artifactory server instance defined in Jenkins:
 			
 def server = Artifactory.server 'artifactory'
+def JobDescription = "Sample Java pipeline Job"
 def rtMaven = Artifactory.newMavenBuild()
 	def buildInfo = Artifactory.newBuildInfo()
   			buildInfo.env.capture = true
