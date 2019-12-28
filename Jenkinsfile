@@ -24,7 +24,7 @@ pipeline {
     stages {
         stage('Clone sources'){
             steps {
-                git url: 'https://github.com/devops81/DevOps-Demo.git'
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkinscred', url: 'https://github.com/devops81/DevOps-Demo.git']]])
             }
         }
 
