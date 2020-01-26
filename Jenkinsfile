@@ -26,6 +26,9 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkinscred', url: 'https://github.com/devops81/DevOps-Demo.git']]])
             }
+		steps {
+             echo "In conscutive step"
+            }
         }
 
  stage('Execute Maven') {
