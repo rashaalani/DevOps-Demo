@@ -37,8 +37,8 @@ pipeline {
 		
 		steps {
 		   script {
-		
-		rtMaven.run pom: '/var/lib/jenkins/workspace/Javapipeline/examples/feed-combiner-java8-webapp/pom.xml', goals: 'clean install', buildInfo: buildInfo
+		dir("${env.WORKSPACE}/examples/feed-combiner-java8-webapp")
+		rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
 			}
 		}
 		
