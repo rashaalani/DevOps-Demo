@@ -110,7 +110,7 @@ pipeline {
 	} 
 
   stage('Archive artifacts')
-  {/
+  {
   steps {
   archiveArtifacts(artifacts: '/var/lib/jenkins/workspace/Javapipeline/examples/feed-combiner-java8-webapp/target/devops.war', fingerprint: true, onlyIfSuccessful: true)
   }
