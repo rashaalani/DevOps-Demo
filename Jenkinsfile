@@ -111,7 +111,9 @@ pipeline {
 
   stage('Archive artifacts')
   {
+  steps {
   archiveArtifacts(artifacts: 'feed-combiner-java8-webapp/target/*.war', fingerprint: true, onlyIfSuccessful: true)
+  }
   }
 	    stage('run-parallel-branches') {
   steps {
