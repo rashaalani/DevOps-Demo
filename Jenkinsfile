@@ -14,7 +14,7 @@ rtMaven.tool = 'maven3' //Maven tool name specified in Jenkins configuration
 
 
 pipeline {
-    agent Linuxagent
+	agent {Linuxagent}
 
 	tools {
 		jdk "java8"
