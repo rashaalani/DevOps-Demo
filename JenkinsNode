@@ -133,7 +133,7 @@ pipeline {
 stage('stash') {
 agent { label "linux" }
 steps {
-stash  allowEmpty: true,includes: 'examples/feed-combiner-java8-webapp/target/*' , name: 'special-data' 
+stash  allowEmpty: true,includes: 'examples/feed-combiner-java8-webapp/*' , name: 'special-data' 
 }
 }
 
