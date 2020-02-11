@@ -132,7 +132,7 @@ pipeline {
 
 stage('stash') {
 steps {
-stash name: "Special-data" , includes: "examples\feed-combiner-java8-webapp\target\*"
+stash name: "Special-data" , includes: "examples/feed-combiner-java8-webapp/target/*"
 }
 }
 
