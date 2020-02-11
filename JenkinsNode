@@ -131,7 +131,7 @@ pipeline {
 } */
 
 stage('stash') {
-agent { lable "linux" }
+agent { label "linux" }
 steps {
 stash name: "special-data" , includes: "examples/feed-combiner-java8-webapp/target/*"
 }
