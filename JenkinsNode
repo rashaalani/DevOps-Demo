@@ -129,6 +129,15 @@ pipeline {
     )
   }
 } */
+
+stage('stash') {
+stash name: "Special-data" , includes: "/var/lib/jenkins/workspace/Javapipeline/examples/feed-combiner-java8-webapp/target/*"
+}
+
+stage('unstash') {
+agent { label "master" }
+stash name: "Special-data"
+}
 	   
 }
 	 post {
