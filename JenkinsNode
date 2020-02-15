@@ -47,7 +47,7 @@ pipeline {
  }
 	    stage('Publish JUNIT')
 	    {
-		    steps { junit '/home/cloud_user/jhome/workspace/Javapipeline/examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
+		    steps { junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
 			  }
 	    } 
 	    
