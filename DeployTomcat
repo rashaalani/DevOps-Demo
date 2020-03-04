@@ -146,7 +146,7 @@ stash name: "special-data"
 stage('Deploy on tomcat')
 {
 steps {
-sh 'cp examples/feed-combiner-java8-webapp/target/devops.war /home/cloud_user/tomcatinstall/apache-tomcat-8.5.47/webapps'
+sh "cp -r examples/feed-combiner-java8-webapp/target/devops.war /home/cloud_user/tomcatinstall/apache-tomcat-8.5.47/webapps"
 }
 }
 }
