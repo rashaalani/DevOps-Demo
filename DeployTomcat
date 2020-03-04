@@ -40,7 +40,7 @@ pipeline {
 		steps {
 		   script {
 		
-		rtMaven.run pom: '/home/cloud_user/jhome/workspace/Javapipeline/examples/feed-combiner-java8-webapp/pom.xml', goals: 'clean install', buildInfo: buildInfo
+		rtMaven.run pom: '/home/cloud_user/jhome/workspace/Javapipeline/examples/feed-combiner-java8-webapp/pom.xml', goals: 'clean install -Dmaven.test.skip=true', buildInfo: buildInfo
 			}
 		}
 		
