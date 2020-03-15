@@ -34,7 +34,7 @@ pipeline {
 
  stage('Execute Maven') {
 	 agent { 
-		 label 'linux'
+		 label 'master'
 	       }
 		
 		steps {
