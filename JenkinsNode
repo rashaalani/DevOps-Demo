@@ -1,7 +1,7 @@
 // Obtaining an Artifactory server instance defined in Jenkins:
 			
 def server = Artifactory.server 'artifactory'
-def workspacevar = "/home/cloud_user/jhome/workspace/Javapipeline"
+def workspacevar = "/var/lib/jenkins/workspace/Javapipeline"
 def JobDescription = "Sample Java pipeline Job"
 def rtMaven = Artifactory.newMavenBuild()
 	def buildInfo = Artifactory.newBuildInfo()
