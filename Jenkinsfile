@@ -1,11 +1,11 @@
 // Obtaining an Artifactory server instance defined in Jenkins:
 			
-def server = Artifactory.server 'artifactory'
+// def server = Artifactory.server 'artifactory'
 
 def JobDescription = "Sample Java pipeline Job"
-def rtMaven = Artifactory.newMavenBuild()
+/* def rtMaven = Artifactory.newMavenBuild()
 	def buildInfo = Artifactory.newBuildInfo()
-  			buildInfo.env.capture = true
+  			buildInfo.env.capture = true */
 rtMaven.tool = 'maven3' //Maven tool name specified in Jenkins configuration
 		 //If artifactory is not defined in Jenkins, then create on:
 		// def server = Artifactory.newServer url: 'Artifactory url', username: 'username', password: 'password'
@@ -79,7 +79,8 @@ pipeline {
 	    stage('Upload on artifactory') {
 		
 	   steps {
-		script {
+		   echo "This step is currently disabled"
+		/* script {
 		
   			
   			
@@ -96,27 +97,27 @@ pipeline {
 			buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
 
 			buildInfo.env.capture = true
-			}
+			} */
 	    }
 	}
 	    
 	   
 
-	 stage('Publish build info') {
+	/* stage('Publish build info') {
 		steps {
 		  script {
 
 		server.publishBuildInfo buildInfo
 		}
 		}
-	} 
+	} */
 
-  stage('Archive artifacts')
+  /* stage('Archive artifacts')
   {
   steps {
   archiveArtifacts(artifacts: 'examples/feed-combiner-java8-webapp/target/devops.war', fingerprint: true, onlyIfSuccessful: true)
   }
-  }
+  }*/ 
 	    stage('run-parallel-branches') {
   steps {
     parallel(
