@@ -16,7 +16,7 @@ def JobDescription = "Sample Java pipeline Job"
 pipeline {
 	agent 
 	{
-		label "linux"
+		label "master"
 	}
 	tools {
 		jdk "java8"
