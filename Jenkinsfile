@@ -6,7 +6,7 @@ def JobDescription = "Sample Java pipeline Job"
 /* def rtMaven = Artifactory.newMavenBuild()
 	def buildInfo = Artifactory.newBuildInfo()
   			buildInfo.env.capture = true */
-rtMaven.tool = 'maven3' //Maven tool name specified in Jenkins configuration
+/* rtMaven.tool = 'maven3' //Maven tool name specified in Jenkins configuration */
 		 //If artifactory is not defined in Jenkins, then create on:
 		// def server = Artifactory.newServer url: 'Artifactory url', username: 'username', password: 'password'
 
