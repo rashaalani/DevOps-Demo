@@ -1,151 +1,58 @@
-// Obtaining an Artifactory server instance defined in Jenkins:
-			
-// def server = Artifactory.server 'artifactory'
 
-def JobDescription = "Sample Java pipeline Job"
-/* def rtMaven = Artifactory.newMavenBuild()
-	def buildInfo = Artifactory.newBuildInfo()
-  			buildInfo.env.capture = true */
-/* rtMaven.tool = 'maven3' //Maven tool name specified in Jenkins configuration */
-		 //If artifactory is not defined in Jenkins, then create on:
-		// def server = Artifactory.newServer url: 'Artifactory url', username: 'username', password: 'password'
+node('master') {
 
-//Create Artifactory Maven Build instance
+stage ('SCM Checkout') {
+	checkout([$class: 'GitSCM', branches: [[name: '*/DPLExample']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/devops81/DevOps-Demo.git']]])
 
-
-pipeline {
-	agent 
-	{
-		label "master"
-	}
-	tools {
-		jdk "java8"
-		maven "maven3"
-	}
-
-    stages {
-        stage('Clone sources'){
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkinscred', url: 'https://github.com/devops81/DevOps-Demo.git']]])
-		 echo "The next step"   
-            }
-		
-        }
-
- stage('Execute Maven') {
-	 agent { 
-		 label 'master'
-	       }
-		
-		steps {
-		   script {
-		
-		rtMaven.run pom: '/var/lib/jenkins/workspace/Javapipeline/examples/feed-combiner-java8-webapp/pom.xml', goals: 'clean install', buildInfo: buildInfo
-			}
-		}
-		
- }
-	    stage('Publish JUNIT')
-	    {
-		    steps { junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
-			  }
-	    }
-	    
-/*stage('Sonarqube') {
-	
-    environment {
-        scannerHome = tool 'SonarScan'
-    }
-    steps {
-	  
-        withSonarQubeEnv('sonarqube') {
-             sh "${scannerHome}/bin/sonar-scanner"
-        }
-        
-    }
 }
 
-//	stage('Quality Gate') {
-//		steps {
-//			timeout(time: 1, unit: 'HOURS') {
-			//Parameter indicates wether to set pipeline to UNSTABLE if Quality Gate fails
-		        // true = set pipeline to UNSTABLE, false = don't
-			// Requires SonarQube Scanner for Jenkins 2.7+
-//			waitForQualityGate abortPipeline: false
-//		       }
-//		 }
-//	} */
+stage ('Compile-Package')
 
-	    stage('Upload on artifactory') {
-		
-	   steps {
-		   echo "This step is currently disabled"
-		/* script {
-		
-  			
-  			
-		
-			rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local', server: server //Defining where the build artifacts should be deployed to
-			
-			rtMaven.resolver releaseRepo:'libs-release', snapshotRepo: 'libs-snapshot', server: server //Defining where Maven Build should download its dependencies from
-			
-			rtMaven.deployer.artifactDeploymentPatterns.addExclude("pom.xml") //Exclude artifacts from being deployed
-			
-			//rtMaven.deployer.deployArtifacts =false // Disable artifacts deployment during Maven run
-		  
-			
-			buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
-
-			buildInfo.env.capture = true
-			} */
-	    }
-	}
-	    
-	   
-
-	/* stage('Publish build info') {
-		steps {
-		  script {
-
-		server.publishBuildInfo buildInfo
-		}
-		}
-	} */
-
-  /* stage('Archive artifacts')
-  {
-  steps {
-  archiveArtifacts(artifacts: 'examples/feed-combiner-java8-webapp/target/devops.war', fingerprint: true, onlyIfSuccessful: true)
-  }
-  }*/ 
-	    stage('run-parallel-branches') {
-  steps {
-    parallel(
-      a: {
-        echo "This is branch a"
-      },
-      b: {
-        echo "This is branch b"
-      }
-    )
-  }
+{
+def mvnHome = tool name: 'MVN3', type: 'maven'
+dir('/var/lib/jenkins/workspace/FOLDER1/Java-Maven-Pipeline/examples/feed-combiner-java8-webapp')
+{ 
+sh "${mvnHome}/bin/mvn clean install"}
 }
-	   
+stage ('Generate JUNIT REPORT') 
+	        {
+                junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml' 
+            	}
+ stage('SonarQub Analysis') {
+
+def mvnHome = tool name: 'MVN3', type: 'maven'
+
+withSonarQubeEnv('SONARQUBESERVER') {
+dir('/var/lib/jenkins/workspace/FOLDER1/Java-Maven-Pipeline/examples/feed-combiner-java8-webapp')
+{
+sh "${mvnHome}/bin/mvn sonar:sonar"
 }
-	 post {
-       // only triggered when blue or green sign
-		 success {
-           slackSend channel: 'stickynotes', color: 'good', iconEmoji: '', message: "Now we are in success clause", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
-       }
-       
-       // triggered when red sign
-       failure {
-           slackSend channel: 'stickynotes', color: 'danger', iconEmoji: '', message: "started ${env.JOB_NAME}  ${env.BUILD_NUMBER} ${env.BUILD_URL}", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
-       }
-       // trigger every-works
-       always {
-           slackSend channel: 'stickynotes', color: 'warning', iconEmoji: '', message: "Always message", teamDomain: 'devops81', tokenCredentialId: 'slacksec', username: 'devops81'
-       }
-		
-    }
+}
+
+}
+
+
+stage ('Build Notification')
+
+{
+emailext body: '${SCRIPT, template="francois.email.groovy.template"}', recipientProviders: [developers()], subject: '$PROJECT_DEFAULT_SUBJECT', to: 'devops@81@gmail.com'
+}
+
+stage ('Deploy to QA')
+{
+
+sh 'sudo rm -rf /home/user/warfile/devops.war'
+sh 'sudo cp  -rf  /var/lib/jenkins/workspace/FOLDER1/Java-Maven-Pipeline/examples/feed-combiner-java8-webapp/target/devops.war /home/user/warfile/'
+
+}
+
+
+
+
+stage ('Deployment Notification')
+
+{
+emailext body: '${SCRIPT, template="francois.email.groovy.template"}', recipientProviders: [developers()], subject: '$PROJECT_DEFAULT_SUBJECT', to: 'devops@81@gmail.com'
+}
+
 }
