@@ -26,10 +26,11 @@
                     stage ('Build the project') {
                         steps {
                             
-                          sh '''
+                      
+                               sh '''
                                 cd "/var/lib/jenkins/workspace/Declarative Pipeline example/examples/feed-combiner-java8-webapp"
-                                mvn test install
-                            '''   }
+                                mvn clean install
+                                '''   }
                     }
                     
                       stage ('Generate JUNIT REPORT') {
