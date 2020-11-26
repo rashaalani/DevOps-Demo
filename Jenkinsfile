@@ -18,7 +18,7 @@
             
                     stage ('Checkout') {
                         steps {
-                            checkout([$class: 'GitSCM', branches: [[name: '*/DPLExample']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'e56f37c9-57f6-4a01-a792-fb61d96f3aa9', url: 'https://github.com/devops81/DevOps-Demo.git']]])
+                            checkout([$class: 'GitSCM', branches: [[name: '*/DPLExample']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'githubcred', url: 'https://github.com/devops81/DevOps-Demo.git']]])
                             
                         }
                     }
