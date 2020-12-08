@@ -3,7 +3,7 @@
                     label "master"
                 }
                 tools {
-                    maven 'Maven3'
+                    maven 'maven3'
             
                 }
                 stages {
