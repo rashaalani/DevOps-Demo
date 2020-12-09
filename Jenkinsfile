@@ -85,13 +85,6 @@ pipeline {
         sh 'hostname'  // 8a88f60d26c1
     }
 }
-post {
-always {
-node('master') { 
-    sh 'echo always'
-    sh 'hostname'     // s17
-}
-}
-}
+
 
 }
