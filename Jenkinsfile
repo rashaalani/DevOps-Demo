@@ -1,4 +1,3 @@
-pipeline {
     agent {
         label "LinuxAgent-New"
     }
@@ -81,20 +80,25 @@ pipeline {
             
             post {
     always {
-    steps {
-                parallel ( 
-                    'Archeiving the reports': 
-          {
-              junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
-              
-          },
-                    'Sending out the JUNIT report' :
-                    {                  
-                       emailext body: 'Junits reporting getting archived', subject: 'junit update', to: 'devops81@gmail.com'
-                   }
-                            
-                         
-                   )
-          } 
+    stage ('Generate JUNIT REPORT') {
+       steps {
+            parallel ( 
+                'Archeiving the reports': 
+      {
+          junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
+          
+      },
+                'Sending out the JUNIT report' :
+                {                  
+                   emailext body: 'Junits reporting getting archived', subject: 'junit update', to: 'devops81@gmail.com'
+               }
+                        
+                     
+               )
+      } 
+  }
     }
+}
+
+
 }
