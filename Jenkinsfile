@@ -1,6 +1,6 @@
             pipeline {
                 agent {
-                    label "master"
+                    label "LinuxAgent-New"
                 }
                 tools {
                     maven 'maven3'
@@ -59,7 +59,7 @@
                     }
                     stage ('Send out email Notification') {
                         agent {
-                            label "master"
+                            label "LinuxAgent-New"
                         }
                         steps {
                             emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'devops81@gmail.com'
