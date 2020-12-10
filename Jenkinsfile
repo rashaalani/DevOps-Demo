@@ -82,7 +82,7 @@ stages {
         post {
 always {
 
-      junit 'examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
+      junit '/home/cloud_user/workspace/AgentExamplePipeline/examples/feed-combiner-java8-webapp/target/surefire-reports/*.xml'
   } 
 }
 }
