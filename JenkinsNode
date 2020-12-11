@@ -24,11 +24,12 @@
                     }
                     
                     stage ('Build the project') {
-                        steps {
+                        steps 
                             
                       
-                               sh '''
-                                cd "/var/lib/jenkins/workspace/DeclrativePipelineExample/examples/feed-combiner-java8-webapp"
+                              
+                               /* cd "/var/lib/jenkins/workspace/DeclrativePipelineExample/examples/feed-combiner-java8-webapp"*/
+                               readMavenPom file: 'pom.xml'
                                 mvn clean install -DskipTests
                                 '''   }
                     }
