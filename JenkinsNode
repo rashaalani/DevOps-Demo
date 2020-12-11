@@ -24,14 +24,14 @@
                     }
                     
                     stage ('Build the project') {
-                        steps 
+                        steps {
                             
                       
                               
                                /* cd "/var/lib/jenkins/workspace/DeclrativePipelineExample/examples/feed-combiner-java8-webapp"*/
                                readMavenPom file: 'pom.xml'
                                 mvn clean install -DskipTests
-                                '''   }
+                                   }
                     }
                     
                       stage ('Generate JUNIT REPORT') {
