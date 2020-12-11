@@ -30,7 +30,7 @@
                               
                                /* cd "/var/lib/jenkins/workspace/DeclrativePipelineExample/examples/feed-combiner-java8-webapp"*/
                                readMavenPom file: 'pom.xml'
-                                maven clean install -DskipTests
+                                call mvn clean install -DskipTests
                                    }
                     }
                     
